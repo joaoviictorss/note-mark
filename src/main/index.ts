@@ -16,10 +16,8 @@ function createWindow(): void {
     vibrancy: 'under-window',
     visualEffectState: 'active',
     backgroundMaterial: 'acrylic',
-    trafficLightPosition: {
-      x: 15,
-      y: 10
-    },
+    frame: false,
+
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
       sandbox: true,
@@ -43,6 +41,22 @@ function createWindow(): void {
   } else {
     mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
   }
+
+  ipcMain.on('app/close', () => {
+    mainWindow.close()
+  })
+
+  ipcMain.on('app/minimize', () => {
+    mainWindow.minimize()
+  })
+
+  ipcMain.on('app/maximize', () => {
+    if (mainWindow.isMaximized()) {
+      mainWindow.unmaximize()
+    } else {
+      mainWindow.maximize()
+    }
+  })
 }
 
 // This method will be called when Electron has finished

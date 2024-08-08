@@ -7,15 +7,24 @@
     @apply h-full;
   }
 
-  body,html {
+  body,
+  html {
     @apply h-full;
 
     @apply select-none;
 
-    @apply bg-white;
+    @apply bg-slate-900;
 
     @apply font-mono antialiased text-white;
 
     @apply overflow-hidden;
+  }
+
+  header {
+    -webkit-app-region: drag;
+  }
+
+  button {
+    -webkit-app-region: no-drag;
   }
 }
