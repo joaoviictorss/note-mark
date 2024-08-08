@@ -6,9 +6,11 @@ declare global {
     // electron: ElectronAPI
     context: {
       locale: string
-      getNotes: GetNotes,
-      readNote: ReadNote,
-      writeNote: WriteNote,
+      getNotes: GetNotes
+      readNote: ReadNote
+      writeNote: WriteNote
+      createNote: CreateNote
+      deleteNote: DeleteNote
       window: {
         close: () => void
         minimize: () => void
