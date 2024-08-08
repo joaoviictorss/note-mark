@@ -11,7 +11,7 @@ const NotePreview = ({
   lastEditTime,
   content,
   className,
-  isActive =false,
+  isActive = false,
   ...props
 }: NotePreviewProps) => {
   const date = formatDateFromMs(lastEditTime)
