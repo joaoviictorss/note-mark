@@ -1,7 +1,7 @@
 import { appDirName, fileEnconding } from '@shared/constants'
 import { NoteInfo } from '@shared/models'
-import { GetNotes, ReadNote } from '@shared/types'
-import { ensureDir, readdir, readFile, stat } from 'fs-extra'
+import { GetNotes, ReadNote, WriteNote } from '@shared/types'
+import { ensureDir, readdir, readFile, stat, writeFile } from 'fs-extra'
 import { homedir } from 'os'
 
 export const getRouteDir = () => {
@@ -41,4 +41,12 @@ export const readNote: ReadNote = async (fileName) => {
   return readFile(`${rootDir}/${fileName}.md`, {
     encoding: fileEnconding
   })
+}
+
+export const writeNote: WriteNote = async (fileName, content) => {
+  const rootDir = getRouteDir()
+
+  console.log(`Escrevendo no arquivo ${fileName}`)
+  const filePath = `${rootDir}/${fileName}.md`
+  return writeFile(filePath, content, { encoding: fileEnconding })
 }
